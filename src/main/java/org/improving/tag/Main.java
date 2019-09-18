@@ -5,12 +5,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        //[type] [name]; => var declaration in Java
-        //[type] [name] = [value]; => assigned an initial value
-        //In Java class starts with a uppercase (convention)
-        //primitive type don't follow upper case convention like char, int (better with memory management for computers)
-        //String and Scanner for example are NOT primitive type
-        //input = input.trim() => set all input with a trimmed value
         boolean loop = true;
         while(loop) {
             System.out.print("> ");
@@ -34,8 +28,7 @@ public class Main {
 
 
 
-/*break won't run codes after the break line in the loop; return will directly run the last line of the code;boolean will run all the codes until the method ends
- System.out.println("Command processed"); continue will jump back to the condition*/
+
         }
     }
 }
