@@ -6,6 +6,17 @@ import java.util.Scanner;
 public class Game {
     private Date startTime;
     private Date endTime;
+    //constructor is invoked by keyword New
+    public Game(int maxInventory){
+        this(maxInventory,21);
+
+    }
+
+    public Game (int maxInventory, int playerAge) {
+
+        System.out.println("Ran the constructor, Maximum inventory is " + maxInventory);
+        System.out.println("The player's age is " + playerAge);
+    }
 
     public Date getStartTime() {
         return startTime;

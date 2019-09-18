@@ -8,7 +8,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-    Game game =new Game();
+        System.out.println("Start of main");
+        Game game = new Game(100, 45);
+        System.out.println("Declare game");
 //    try {
 //     game.run();
 //    }catch(Exception ex) {
@@ -16,11 +18,12 @@ public class Main {
 //    }finally{
 //        System.out.println("Hit the finally");
 //    }
-    game.run();
-    long elapsedTicks = game.getEndTime().getTime() -
+        game.run();
+        System.out.println("After run()");
+        long elapsedTicks = game.getEndTime().getTime() -
             game.getStartTime().getTime();
-    double elapsedSeconds = elapsedTicks / 1000.0;
-    System.out.println("We were running for " + elapsedSeconds + "s.");
+        double elapsedSeconds = elapsedTicks / 1000.0;
+        System.out.println("We were running for " + elapsedSeconds + "s.");
 
 
     }
