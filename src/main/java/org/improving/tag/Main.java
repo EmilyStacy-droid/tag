@@ -24,11 +24,6 @@ public class Main {
             }else {
                 System.out.println("Huh? I don't understand");
             }
-            // equalsIgnoreCase():https://www.w3resource.com/java-tutorial/string/string_equalsignorecase.php
-
-
-
-
         }
     }
 }
