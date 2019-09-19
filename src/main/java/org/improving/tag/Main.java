@@ -9,15 +9,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Start of main");
-        Game game = new Game(100, 45);
+        Game game = new Game();
         System.out.println("Declare game");
-//    try {
-//     game.run();
-//    }catch(Exception ex) {
-//        System.out.println("Caught an Exception");
-//    }finally{
-//        System.out.println("Hit the finally");
-//    }
         game.run();
         System.out.println("After run()");
         long elapsedTicks = game.getEndTime().getTime() -
