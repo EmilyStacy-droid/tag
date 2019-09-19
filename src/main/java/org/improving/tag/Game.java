@@ -1,5 +1,7 @@
 package org.improving.tag;
 
+import org.improving.tag.commands.LookCommand;
+
 import java.util.Date;
 import java.util.Scanner;
 
@@ -27,14 +29,14 @@ public class Game {
     public void run ()  {
         Scanner scanner = new Scanner(System.in);
         this.setStartTime(new Date());
-
         boolean loop = true;
         while(loop) {
             System.out.print("> ");
             String input = scanner.nextLine().trim();
+            LookCommand lCmd = new LookCommand();
             //conditional statement
-            if (input.equals("look")) {
-                System.out.println("You look around.");
+            if (lCmd.isValid(input)) {
+               lCmd.execute(input);
             }else if (input.equals("inventory")) {
                 System.out.println("You are carrying nothing.");
             }else if (input.equalsIgnoreCase("dance")) {
