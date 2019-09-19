@@ -1,9 +1,6 @@
 package org.improving.tag;
 
-import org.improving.tag.commands.DanceCommand;
-import org.improving.tag.commands.InventoryCommand;
-import org.improving.tag.commands.JumpCommand;
-import org.improving.tag.commands.LookCommand;
+import org.improving.tag.commands.*;
 
 import java.util.Date;
 import java.util.Scanner;
@@ -11,7 +8,14 @@ import java.util.Scanner;
 public class Game {
     private Date startTime;
     private Date endTime;
-    //constructor is invoked by keyword New
+    private BaseEmoteCommand[] commands;
+    public Game(){
+        commands = new BaseEmoteCommand[]{
+                new LookCommand(), 
+                new DanceCommand(),
+                new InventoryCommand(),
+                new JumpCommand()};
+    }
 
     public Date getStartTime() {
         return startTime;
@@ -21,6 +25,7 @@ public class Game {
         this.startTime = startTime;
     }
 
+   
     public Date getEndTime() {
         return endTime;
     }
@@ -28,7 +33,6 @@ public class Game {
     private void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
-
     public void run ()  {
         Scanner scanner = new Scanner(System.in);
         this.setStartTime(new Date());
@@ -36,19 +40,10 @@ public class Game {
         while(loop) {
             System.out.print("> ");
             String input = scanner.nextLine().trim();
-            LookCommand lCmd = new LookCommand();
-            DanceCommand dCmd = new DanceCommand();
-            InventoryCommand iCmd = new InventoryCommand();
-            JumpCommand jCmd = new JumpCommand();
-            //conditional statement
-            if (lCmd.isValid(input)) {
-               lCmd.execute(input);
-            }else if (iCmd.isValid(input)) {
-               iCmd.execute(input);
-            }else if (dCmd.isValid(input)) {
-                dCmd.execute(input);
-            } else if (jCmd.isValid(input)) {
-               jCmd.execute(input);;
+            BaseEmoteCommand validCommand = getValidCommand(input);
+            //put constant(something that always has certain value) first and whatever can change later
+            if(null != validCommand) {
+                validCommand.execute(input);
             }else if (input.equalsIgnoreCase("exit")) {
                 System.out.println("Goodbye.");
                 loop =false;
@@ -59,6 +54,13 @@ public class Game {
         this.setEndTime(new Date());
     }
 
-
+    private BaseEmoteCommand getValidCommand(String input) {
+        for(BaseEmoteCommand command: commands) {
+            if(command.isValid(input)) {
+               return command;
+            }
+        }
+        return null;
+    }
 
 }
