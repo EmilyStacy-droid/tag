@@ -14,9 +14,11 @@ public abstract class BaseEmoteCommand implements Command {
         this.io = io;
     }
     public boolean isValid(String input) {
-        return input.trim().equalsIgnoreCase(cmdText);
+        //ternary operation <boolean>?<true>:<false>
+        //javascript: <variable>??<default>=> if variable is null, return default, if not, use variable
+        return (input==null?"":input).trim().equalsIgnoreCase(cmdText);
     }
     public void execute(String input) {
-        System.out.println(cmdResponse);
+        io.displayText(cmdResponse);
     }
 }
