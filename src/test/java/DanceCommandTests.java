@@ -1,4 +1,4 @@
-import org.improving.tag.InputOutput;
+
 import org.improving.tag.commands.DanceCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,15 +31,6 @@ public class DanceCommandTests {
         //Assert
         assertTrue(result);
     }
-
-    @Test
-    public void isValid_should_be_false_when_input_is_foobar(){
-        //Act
-        var result = target.isValid("foobar");
-        //Assert
-        assertFalse(result);
-    }
-
     @Test
     public void isValid_should_be_false_when_input_is_null(){
         //Act
@@ -63,6 +54,15 @@ public class DanceCommandTests {
         //Assert
         assertTrue(result);
     }
+    @Test
+    public void isValid_should_be_false_when_input_is_foobar(){
+        //Act
+        var result = target.isValid("foobar");
+        //Assert
+        assertFalse(result);
+    }
+
+
 
 
 }
