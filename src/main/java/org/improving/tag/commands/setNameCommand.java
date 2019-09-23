@@ -13,15 +13,11 @@ public class setNameCommand implements Command {
     @Override
     public boolean isValid(String input, Game game) {
         if(input == null) return false;
-        var parts = input.split("=");
         input = input.trim();
-        if(input.contains("=")) {
-            //parts = input.split("=");
+        var parts = input.split("=");
+
+        if(parts.length == 2) {
             return parts[0].equalsIgnoreCase("@set name");
-        }if(parts.length ==1){
-            return false;
-        } else if(input.contains("=") == false) {
-            return false;
         }
 
         return false;
