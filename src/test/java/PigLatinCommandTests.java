@@ -18,20 +18,20 @@ public class PigLatinCommandTests {
     @Test
     public void execute_should_display_pig_Latin(){
         //Act
-        target.execute("pl roll");
+        target.execute("pl roll", null);
         //Assert
         assertEquals("ollray", io.lastText);
     }
     @Test
     public void execute_should_display_pig_Latin_two_words_above(){
-        target.execute("pl have fun y'all");
+        target.execute("pl have fun y'all", null);
         assertEquals("avefuny'allhay", io.lastText);
     }
     @Test
     public void isValid_should_be_true_when_input_is_pl_with_a_word() {
 
         //Act
-        var result = target.isValid("pl roll");
+        var result = target.isValid("pl roll", null);
         //Assert
         assertTrue(result);
     }
@@ -39,7 +39,7 @@ public class PigLatinCommandTests {
     @Test
     public void isValid_should_be_false_when_input_is_foobar(){
         //Act
-        var result = target.isValid("foobar");
+        var result = target.isValid("foobar", null);
         //Assert
         assertFalse(result);
     }
@@ -47,7 +47,7 @@ public class PigLatinCommandTests {
     @Test
     public void isValid_should_be_false_when_input_is_null(){
         //Act
-        var result = target.isValid(null);
+        var result = target.isValid(null, null);
         //Assert
         assertFalse(result);
     }
@@ -55,7 +55,7 @@ public class PigLatinCommandTests {
     @Test
     public void isValid_should_be_true_when_input_is_pl_with_spaces() {
         //Act
-        var result = target.isValid("   pl fun   ");
+        var result = target.isValid("   pl fun   ", null);
         //Assert
         assertTrue(result);
     }
@@ -63,7 +63,7 @@ public class PigLatinCommandTests {
     @Test
     public void isValid_should_be_true_when_input_is_pl_with_caps() {
         //Act
-        var result = target.isValid("pL FUN");
+        var result = target.isValid("pL FUN", null);
         //Assert
         assertTrue(result);
     }
@@ -71,7 +71,7 @@ public class PigLatinCommandTests {
     @Test
     public void isValid_should_be_false_when_input_is_only_one_word(){
         //Act
-        var result = target.isValid("pl");
+        var result = target.isValid("pl", null);
         //Assert
         assertFalse(result);
     }

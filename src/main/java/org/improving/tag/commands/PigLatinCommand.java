@@ -1,14 +1,15 @@
 package org.improving.tag.commands;
+import org.improving.tag.Game;
 import org.improving.tag.InputOutput;
 import org.springframework.stereotype.Component;
 
 @Component
-
 public class PigLatinCommand implements Command {
     private InputOutput io;
     public PigLatinCommand(InputOutput io) {this.io = io;};
+
     @Override
-    public boolean isValid(String input) {
+    public boolean isValid(String input, Game game) {
         if(input == null) return false;
         input = input.trim();
         var parts = input.split(" ");
@@ -18,7 +19,7 @@ public class PigLatinCommand implements Command {
     }
 
     @Override
-    public void execute(String input) {
+    public void execute(String input, Game game) {
         input = input.trim();
         var parts = input.split(" ");
         /*there is a bug:
