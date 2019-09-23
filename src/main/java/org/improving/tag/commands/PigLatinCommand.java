@@ -4,9 +4,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 
-public class ReturnAdverb implements Command {
+public class PigLatinCommand implements Command {
     private InputOutput io;
-    public ReturnAdverb(InputOutput io) {this.io = io;};
+    public PigLatinCommand(InputOutput io) {this.io = io;};
     @Override
     public boolean isValid(String input) {
         if(input == null) return false;

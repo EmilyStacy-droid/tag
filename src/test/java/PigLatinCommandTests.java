@@ -1,18 +1,18 @@
-import org.improving.tag.commands.ReturnAdverb;
+import org.improving.tag.commands.PigLatinCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ReturnAdverbTests {
-    ReturnAdverb target;
+public class PigLatinCommandTests {
+    PigLatinCommand target;
     TestInputOutput io;
     @BeforeEach
     public void arrange(){
         //Arrange
         //DanceCommand(type) has been mentioned on the other side of operator, so use var instead
         io = new TestInputOutput();
-        target = new ReturnAdverb (io);
+        target = new PigLatinCommand(io);
     }
 
     @Test
