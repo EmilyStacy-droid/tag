@@ -12,11 +12,17 @@ public class Game {
     private Command[] commands;
     private InputOutput io;
     private Player p;
+    private Location startingLocation;
 
     public Game(Command[] commands, InputOutput io) {
+        startingLocation = buildWorld();
         this.commands = commands;
         this.io = io;
-        this.p = new Player();
+        this.p = new Player(startingLocation);
+    }
+//get starting location
+    public Location getStartingLocation() {
+        return startingLocation;
     }
 
     public Player getPlayer() {
@@ -69,5 +75,30 @@ public class Game {
         }
         return null;
     }
+private Location buildWorld() {
+        var tdh = new Location();
+        tdh.setName("The Deathly Hallows");
+
+        var td = new Location();
+        td.setName("The Desert");
+
+        var ta = new Location();
+        ta.setName("The Amazon");
+
+        var tmcs = new Location();
+        tmcs.setName("The Mac & Cheese shop");
+
+        var tvm = new Location();
+        tvm.setName("The Velvet Moose");
+
+        tdh.getExits().add(new Exit("Heaven Ave", tmcs, "h", "heaven", "ave"));
+        tdh.getExits().add(new Exit("The Deathly Brownie", td, "tdb","Brownie","deathly"));
+        td.getExits().add(new Exit("Camel Path", ta, "cp", "camel", "path"));
+        tmcs.getExits().add(new Exit("highway 121",ta, "121", "hwy", "hwy 121", "h121"));
+        ta.getExits().add(new Exit("Amaz-ing Moose", tvm, "moose","AM", "Amazing","ing", "Amaz", "Amaz-ing"));
+
+
+        return tdh;
+}
 
 }

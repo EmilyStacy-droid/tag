@@ -33,13 +33,14 @@ public class SetNameTest {
         //Act
         var result = target.isValid("@set name=Fluefedor", game);
         //Assert
-        //rify(player).setName(anyString());
+        //verify(player).setName(anyString());
         //verify(game,times(2)).getPlayer();
         assertTrue(result);
     }
     @Test
     public void execute_should_display_name(){
-        Player player = new Player();
+        //in the test we don't need to worry about the location yet, so put "null here"
+        Player player = new Player(null);
         player.setName("hi");
         player.setHitPoints(50);
         player = spy(player);//get back a child object ;
@@ -48,8 +49,8 @@ public class SetNameTest {
         //Act
         target.execute("@setName=Fluefedor", game);
         //Assert
-        verify(player).setName(anyString());
-        verify(game, times(2)).getPlayer();
+        verify(player).setName("Fluefedor");
+        //verify(game, times(2)).getPlayer();=>getPlayer twice is not what the test is measured
         //assertEquals("Your name is now Fluefedor.", io.lastText);
     }
 
