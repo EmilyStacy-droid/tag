@@ -28,7 +28,7 @@ public class setNameCommand implements Command {
             //input = input.trim();
             var name = input.split("=")[1].trim();
             game.getPlayer().setName(name);
-            io.displayText("Your name is now " + name + ".");
+            io.displayText("Your name is now " + game.getPlayer().getName() + ".");
 
     }
 

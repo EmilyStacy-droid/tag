@@ -74,6 +74,7 @@ public class PigLatinCommandTests {
         var result = target.isValid("pl", null);
         //Assert
         assertFalse(result);
+
     }
 
 }
