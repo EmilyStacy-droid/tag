@@ -15,10 +15,7 @@ public class Game {
     private Location startingLocation;
 
     public Game(Command[] commands, InputOutput io) {
-        startingLocation = buildWorld();
-        this.commands = commands;
-        this.io = io;
-        this.p = new Player(startingLocation);
+    
     }
 //get starting location
     public Location getStartingLocation() {
@@ -46,35 +43,10 @@ public class Game {
         this.endTime = endTime;
     }
     public void run ()  {
-        this.setStartTime(new Date());
 
-
-        boolean loop = true;
-        while(loop) {
-            io.displayPrompt("> ");
-            String input = io.receiveInput();
-            Command validCommand = getValidCommand(input);
-            //put constant(something that always has certain value) first and whatever can change later
-            if(null != validCommand) {
-                validCommand.execute(input, this);
-            }else if (input.equalsIgnoreCase("exit")) {
-                io.displayText("Goodbye.");
-                loop =false;
-            }else {
-                io.displayText("Huh? I don't understand.");
-            }
-        }
-        this.setEndTime(new Date());
     }
 
-    private Command getValidCommand(String input) {
-        for(Command command: commands) {
-            if(command.isValid(input, this)) {
-               return command;
-            }
-        }
-        return null;
-    }
+
 private Location buildWorld() {
         var tdh = new Location();
         tdh.setName("The Deathly Hallows");
