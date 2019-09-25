@@ -57,7 +57,7 @@ public class SetNameTest {
     @Test
     public void execute_should_display_all_words_with_spaces(){
         //Act
-        target.execute("  @setname=Fluefedor  ", new Game(null,null));
+        target.execute("  @setname=Fluefedor  ", new Game(null,null, null));
         //Assert
         assertEquals("Your name is now Fluefedor.", io.lastText);
     }
