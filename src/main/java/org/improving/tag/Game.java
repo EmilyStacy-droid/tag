@@ -38,14 +38,15 @@ public Date getStartTime(){
     public Date getEndTime() {
         return endTime;
     }
+    //set private start time because it shouldn't be changed
+    private void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+    private void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
     public void run ()  {
-        //set private start time because it shouldn't be changed
-        private void setStartTime(Date startTime) {
-            this.startTime = startTime;
-        }
-        private void setEndTime(Date endTime) {
-            this.endTime = endTime;
-        }
+        
 
 
     }
