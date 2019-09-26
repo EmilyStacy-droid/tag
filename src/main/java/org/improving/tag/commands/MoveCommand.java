@@ -28,7 +28,11 @@ public class MoveCommand implements Command {
         for(var e: game.getPlayer().getLocation().getExits()){
             if(e.getName().equalsIgnoreCase(destination)){
                 exit = e;
-            }else{
+            }else if(game.getPlayer().getLocation().getAdversary() != null){
+                io.displayText("You shall not pass");
+                return;
+            }
+            else{
                 for (var a : e.getAliases()){
                     if(a.equalsIgnoreCase(destination)){
                        exit = e; //out of inner loop

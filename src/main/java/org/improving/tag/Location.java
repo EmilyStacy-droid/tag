@@ -9,7 +9,7 @@ public class Location {
     //declaration                 appointment
     private List<String> tags = new ArrayList<>();
     private List<Exit> exits = new ArrayList<>();
-    private Adversary adversary = new Adversary();
+    private Adversary adversary;
 
     public Adversary getAdversary() {
         return adversary;
@@ -17,6 +17,7 @@ public class Location {
 
     public void setAdversary(Adversary adversary) {
         this.adversary = adversary;
+
     }
 
     public String getName() {
