@@ -13,6 +13,7 @@ public abstract class BaseEmoteCommand implements Command {
         this.cmdResponse = cmdResponse;
         this.io = io;
     }
+
     //override two methods from Command
     @Override
     public boolean isValid(String input, Game game) {
