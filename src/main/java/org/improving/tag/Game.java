@@ -53,7 +53,6 @@ public class Game {
     public void run ()  {
         this.setStartTime(new Date());
 
-
         boolean loop = true;
         while(loop) {
             io.displayPrompt("> ");
@@ -110,21 +109,27 @@ private Location buildWorld() {
 
         var tit = new Location();
         tit.setName("The Ice Cream Truck");
+        this.locationList.add(tit);
 
         var tms = new Location();
         tms.setName("The Mountains");
+        this.locationList.add(tms);
 
         var tm = new Location();
         tm.setName("The Mall");
+        this.locationList.add(tm);
 
         var md = new Location();
         md.setName("Mount Doom");
+        this.locationList.add(md);
 
         var tr = new Location();
         tr.setName("The Reef");
+        this.locationList.add(tr);
 
         var tvd = new Location();
         tvd.setName("The Volcano of Death");
+        this.locationList.add(tvd);
 
         tdh.getExits().add(new Exit("Heaven Ave", tmcs, "h", "heaven", "ave"));
         tdh.getExits().add(new Exit("The Deathly Brownie", td, "tdb","Brownie","deathly"));
@@ -155,7 +160,12 @@ private Location buildWorld() {
         return tdh;
 }
 
-    public Location getLocationOf(final String location) {
-
+    public Location getLocationOf(final String intendedLocationName) {
+        for(Location location: locationList) {
+            if(intendedLocationName.equalsIgnoreCase(location.getName())){
+                return location;
+            }
+        }
+        return null;
     }
 }

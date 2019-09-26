@@ -38,6 +38,7 @@ public class SaveGameFactory {
             return;
         }
 
-        Location newLocation = game.getLocationOf(saveContents.get("location"));
+        Location lastKnownLocation = game.getLocationOf(saveContents.get("location"));
+        game.getPlayer().setLocation(lastKnownLocation);
     }
 }

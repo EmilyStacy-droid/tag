@@ -23,6 +23,5 @@ public class Main {
             game.getStartTime().getTime();
         double elapsedSeconds = elapsedTicks / 1000.0;
         System.out.println("We were running for " + elapsedSeconds + "s.");
-        game.run();
     }
 }

@@ -27,7 +27,7 @@ public class FileSystemAdapter {
         List<String> contents = Files.readAllLines(Path.of(path)); // open the file and read each line
 
         for(String line : contents) {
-            String [] temp = line.split("\\ |"); //set pipe as a divider
+            String [] temp = line.split("\\|"); //set pipe as a divider
             properties.put(temp[0], temp[1]);
         }
         return properties;

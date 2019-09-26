@@ -48,7 +48,7 @@ public void setup() {
     }
 
     @Test
-    public void load_should_load_save_file(){
+    public void load_should_load_save_file() throws IOException {
         //arrange
         String path = "thisisafakepath";
         //Map of == testingMap.put(key,value)
