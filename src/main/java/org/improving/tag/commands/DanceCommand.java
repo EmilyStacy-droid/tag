@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class DanceCommand extends BaseEmoteCommand {
     //make a constructor w/super && take a parameter inputoutput io=>3 parameters in BaseEmoteCommand
     public DanceCommand(InputOutput io){
-        super("dance", "you dance around",io);
+        super("dance", "you dance around",io, "d", "ance", "dance");
     }
 }
 

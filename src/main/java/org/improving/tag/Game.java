@@ -9,13 +9,16 @@ import java.util.Scanner;
 public class Game {
     private Date startTime;
     private Date endTime;
-    private Command[] commands;
+    private Command[] commands; //created by Spring
     private InputOutput io;
     private Player p;
     private Location startingLocation;
 
     //constructor
     public Game(Command[] commands, InputOutput io) {
+        for (var command:commands){
+            System.out.println(command);
+        }
         startingLocation = buildWorld();
         this.commands = commands;
         this.io = io;
@@ -46,8 +49,34 @@ public Date getStartTime(){
         this.endTime = endTime;
     }
     public void run ()  {
-        
 
+        this.setStartTime(new Date());
+
+        boolean loop = true;
+        while(loop) {
+            io.displayPrompt("> ");
+            String input = io.receiveInput();
+            Command validCommand = getValidCommand(input);
+            //put constant(something that always has certain value) first and whatever can change later
+            if(null != validCommand) {
+                validCommand.execute(input, this);
+            }else if (input.equalsIgnoreCase("exit")) {
+                io.displayText("Goodbye.");
+                loop =false;
+            }else {
+                io.displayText("Huh? I don't understand.");
+            }
+        }
+        this.setEndTime(new Date());
+    }
+
+    private Command getValidCommand(String input) {
+        for(Command command: commands) {
+            if(command.isValid(input, this)) {
+                return command;
+            }
+        }
+        return null;
 
     }
 
