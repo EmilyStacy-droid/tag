@@ -1,12 +1,17 @@
 package org.improving.tag;
 
 public class Adversary {
-    private String adversaryName = "Sauron";
-    private int hitPoints = 100;
-    private int damageTokenProperty;
+    private String adversaryName;
+    private int hitPoints;
+    private int damageTakenProperty;
     private int attackDamageProperty;
 
-
+    public Adversary(String adversaryName) {
+        this.adversaryName = adversaryName;
+        this.hitPoints = 100;
+        this.damageTakenProperty = 0;
+        this.attackDamageProperty = 10;
+    }
 
     public String getName() {
         return adversaryName;
@@ -24,12 +29,12 @@ public class Adversary {
         this.hitPoints = hitPoints;
     }
 
-    public int getDamageTokenProperty() {
-        return damageTokenProperty;
+    public int getDamageTakenProperty() {
+        return damageTakenProperty;
     }
 
-    public void setDamageTokenProperty(int damageTokenProperty) {
-        this.damageTokenProperty = damageTokenProperty;
+    public void setDamageTakenProperty(int damageTakenProperty) {
+        this.damageTakenProperty = damageTakenProperty;
     }
 
     public int getAttackDamageProperty() {
