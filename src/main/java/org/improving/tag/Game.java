@@ -17,31 +17,7 @@ public class Game {
     public Game(Command[] commands, InputOutput io) {
     
     }
-//get starting location
-    public Location getStartingLocation() {
-        return startingLocation;
-    }
-
-    public Player getPlayer() {
-        return p;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    private void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-   
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    private void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
+/
     public void run ()  {
 
     }
