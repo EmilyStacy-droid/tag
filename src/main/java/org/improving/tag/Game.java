@@ -22,14 +22,45 @@ public class Game {
         this.p = new Player(startingLocation);
     }
 
+//set methods to get data from the fields
+    public Location getStartingLocation(){
+        return startingLocation;
+}
 
+public Player getPlayer(){
+        return p;
+}
 
+public Date getStartTime(){
+        return startTime;
+}
+
+    public Date getEndTime() {
+        return endTime;
+    }
     public void run ()  {
-        public void setTime() {
-            
+        //set private start time because it shouldn't be changed
+        private void setStartTime(Date startTime) {
+            this.startTime = startTime;
+        }
+        private void setEndTime(Date endTime) {
+            this.endTime = endTime;
         }
 
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 private Location buildWorld() {
