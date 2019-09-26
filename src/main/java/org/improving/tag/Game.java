@@ -3,7 +3,9 @@ package org.improving.tag;
 import org.improving.tag.commands.*;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 @Component
 public class Game {
@@ -13,6 +15,7 @@ public class Game {
     private InputOutput io;
     private Player p;
     private Location startingLocation;
+    private List<Location> locationList = new ArrayList<>(100);
     private final SaveGameFactory saveFactory;
 
     public Game(Command[] commands, InputOutput io, SaveGameFactory saveFactory) {
@@ -84,18 +87,23 @@ public class Game {
 private Location buildWorld() {
         var tdh = new Location();
         tdh.setName("The Deathly Hallows");
+        this.locationList.add(tdh);
 
         var td = new Location();
         td.setName("The Desert");
+        this.locationList.add(td);
 
         var ta = new Location();
         ta.setName("The Amazon");
+        this.locationList.add(ta);
 
         var tmcs = new Location();
         tmcs.setName("The Mac & Cheese shop");
+        this.locationList.add(tmcs);
 
         var tvm = new Location();
         tvm.setName("The Velvet Moose");
+        this.locationList.add(tvm);
 
         tdh.getExits().add(new Exit("Heaven Ave", tmcs, "h", "heaven", "ave"));
         tdh.getExits().add(new Exit("The Deathly Brownie", td, "tdb","Brownie","deathly"));
@@ -107,4 +115,7 @@ private Location buildWorld() {
         return tdh;
 }
 
+    public Location getLocationOf(final String location) {
+
+    }
 }
