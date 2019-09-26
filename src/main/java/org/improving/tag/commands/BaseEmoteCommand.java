@@ -4,24 +4,16 @@ import org.improving.tag.Game;
 import org.improving.tag.InputOutput;
 
 public abstract class BaseEmoteCommand implements Command {
-    private String cmdText;//field
-    private String cmdResponse; //field
     private InputOutput io;
-
-
-    public BaseEmoteCommand(String cmdText, String cmdResponse, InputOutput io){
-        this.cmdText = cmdText;
-        this.cmdResponse = cmdResponse;
-        this.io = io;
-    }
+    private Game game;
     @Override
-    public boolean isValid(String input, Game game) {
-        //ternary operation <boolean>?<true>:<false>
-        //javascript: <variable>??<default>=> if variable is null, return default, if not, use variable
-        return (input==null?"":input).trim().equalsIgnoreCase(cmdText);
+    public boolean isValid(String input, Game game, InputOutput io) {
+       this.game = game;
+       this.io = io;
     }
+
     @Override
-    public void execute(String input, Game game) {
-        io.displayText(cmdResponse);
+    public void execute(String input, Game game, InputOutput io) {
+
     }
 }

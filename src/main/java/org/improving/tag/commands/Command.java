@@ -4,9 +4,7 @@ import org.improving.tag.Game;
 
 
 public interface Command {
-public boolean isValid(String cmdText, Game game);
+    boolean isValid(String input, Game game);
 
-public void execute (String prompt, Game game);
-
-
+    void execute (String input, Game game);
 }
