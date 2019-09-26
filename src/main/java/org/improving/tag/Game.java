@@ -14,10 +14,16 @@ public class Game {
     private Player p;
     private Location startingLocation;
 
+    //constructor
     public Game(Command[] commands, InputOutput io) {
-    
+        startingLocation = buildWorld();
+        this.commands = commands;
+        this.io = io;
+        this.p = new Player(startingLocation);
     }
-/
+
+
+
     public void run ()  {
         public void setTime() {
             
