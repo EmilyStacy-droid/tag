@@ -1,12 +1,14 @@
 package org.improving.tag;
 
+import org.improving.tag.commands.BaseAliaseCommand;
 import org.improving.tag.commands.Command;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
 @Component
-public class Attack implements Command {
+public class Attack extends BaseAliaseCommand {
+
     private InputOutput io;
 
     public Attack(InputOutput io) {
@@ -25,9 +27,10 @@ public class Attack implements Command {
 
         if (adversary == null) {
             io.displayText("Attack what?");
-        } else {
+            return;
+        }  {
             Random r = new Random();
-            int ranN = r.nextInt(101);
+            int ranN = r.nextInt(100);
             ranN +=1;
             if(ranN <=20) {
                 adversary.setHitPoints(adversary.getHitPoints() - 10);
