@@ -7,28 +7,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class BaseEmoteCommand implements Command {
+public abstract class BaseEmoteCommand extends BaseAliaseCommand {
     private InputOutput io;
     private String cmdText;
     private String cmdResponse;
-    private List<String> aliases = new ArrayList<>();
+//    private List<String> aliases = new ArrayList<>();
     //constructor to get value from two strings and io
-    public BaseEmoteCommand (String cmdText, String cmdResponse, InputOutput io,String...aliases) {
+    public BaseEmoteCommand (String cmdText, String cmdResponse, InputOutput io) {
         this.cmdText = cmdText;
         this.cmdResponse = cmdResponse;
-        this.io = io;
-        this.aliases.addAll(Arrays.asList(aliases));
+          this.io = io;
+        super(cmdText);
+//        this.aliases.addA
+//        ll(Arrays.asList(aliases));
     }
 
-    //override two methods from Command
-    @Override
-    public boolean isValid(String input, Game game) {
-        if(input == null) {
-            return false;
-        }
-        var trimmedInput = input.trim();
-        return aliases.stream().anyMatch(trimmedInput::equalsIgnoreCase);
-    }
 
     @Override
     public void execute(String input, Game game) {
