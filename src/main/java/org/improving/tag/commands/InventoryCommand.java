@@ -9,3 +9,4 @@ public class InventoryCommand extends BaseEmoteCommand {
         super("inventory", "You are carrying nothing.", io);
     }
 }
+
