@@ -1,21 +1,20 @@
-package org.improving.tag;
+package org.improving.tag.commands;
 
+import org.improving.tag.Game;
+import org.improving.tag.InputOutput;
+import org.improving.tag.commands.BaseAliaseCommand;
 import org.improving.tag.commands.Command;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
 @Component
-public class Attack implements Command {
+public class AttackCommand extends BaseAliaseCommand {
     private InputOutput io;
 
-    public Attack(InputOutput io) {
+    public AttackCommand(InputOutput io) {
+        super("attack","a");
         this.io = io;
-    }
-
-    @Override
-    public boolean isValid(String input, Game game) {
-        return (input==null?"":input).trim().equalsIgnoreCase("attack");
     }
 
     @Override
@@ -25,9 +24,10 @@ public class Attack implements Command {
 
         if (adversary == null) {
             io.displayText("Attack what?");
-        } else {
+            return;
+        }  {
             Random r = new Random();
-            int ranN = r.nextInt(101);
+            int ranN = r.nextInt(100);
             ranN +=1;
             if(ranN <=20) {
                 adversary.setHitPoints(adversary.getHitPoints() - 10);
