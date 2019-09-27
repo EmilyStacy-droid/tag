@@ -32,7 +32,7 @@ public class Attack implements Command {
             if(ranN <=20) {
                 adversary.setHitPoints(adversary.getHitPoints() - 10);
                 damage = damage +10;
-                io.displayText("Your remaining point is " + adversary.getHitPoints());
+                io.displayText("Sauron's remaining point is " + adversary.getHitPoints());
 
             }else {
                 io.displayText("Attack has missed");

@@ -86,7 +86,7 @@ public class Game {
 private Location buildWorld() {
         var tdh = new Location();
         tdh.setName("The Deathly Hallows");
-        tdh.setAdversary(new Adversary("Celron"));
+        tdh.setAdversary(new Adversary("Sauron"));
         this.locationList.add(tdh);
 
         var td = new Location();
