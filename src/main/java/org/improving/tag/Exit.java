@@ -9,8 +9,6 @@ public class Exit {
     private Location destination;
     private List<String> aliases = new ArrayList<>();
 
-    public Exit() { }
-
     // ... cannot be in a middle; it needs to be at the end of the parameter
     public Exit(String name, Location destination, String...aliases){
         this.name = name;
