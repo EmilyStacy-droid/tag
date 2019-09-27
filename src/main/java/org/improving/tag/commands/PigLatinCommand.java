@@ -21,17 +21,10 @@ public class PigLatinCommand implements Command {
     @Override
     public void execute(String input, Game game) {
         input = input.trim();
-        var parts = input.split(" ");
-        /*there is a bug:
-        input: pl   i love your cloth
-        output:  iloveyourcloth ay
-         */
-        var destination = input.substring(3,4);
-        //io.displayText (input.substring(4)+ destination + "ay");
-            String remove2ndPartTrim = input.substring(4).replaceAll("\\s+", "");
-            io.displayText(remove2ndPartTrim+destination+"ay");
 
-
-
+        var destination = input.replaceAll("\\s+", "").substring(2,3);
+        System.out.println(destination);
+        String remove2ndPartTrim = input.replaceAll("\\s+", "").substring(3);
+        io.displayText(remove2ndPartTrim + destination +"ay");
     }
 }
