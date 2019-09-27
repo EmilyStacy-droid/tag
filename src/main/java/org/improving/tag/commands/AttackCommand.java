@@ -1,5 +1,7 @@
-package org.improving.tag;
+package org.improving.tag.commands;
 
+import org.improving.tag.Game;
+import org.improving.tag.InputOutput;
 import org.improving.tag.commands.BaseAliaseCommand;
 import org.improving.tag.commands.Command;
 import org.springframework.stereotype.Component;
@@ -7,17 +9,12 @@ import org.springframework.stereotype.Component;
 import java.util.Random;
 
 @Component
-public class Attack extends BaseAliaseCommand {
-
+public class AttackCommand extends BaseAliaseCommand {
     private InputOutput io;
 
-    public Attack(InputOutput io) {
+    public AttackCommand(InputOutput io) {
+        super("attack","a");
         this.io = io;
-    }
-
-    @Override
-    public boolean isValid(String input, Game game) {
-        return (input==null?"":input).trim().equalsIgnoreCase("attack");
     }
 
     @Override
