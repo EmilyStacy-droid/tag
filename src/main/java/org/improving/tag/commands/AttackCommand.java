@@ -13,7 +13,7 @@ public class AttackCommand extends BaseAliaseCommand {
     private InputOutput io;
 
     public AttackCommand(InputOutput io) {
-        super("attack","a");
+        super(io,"attack","a");
         this.io = io;
     }
 

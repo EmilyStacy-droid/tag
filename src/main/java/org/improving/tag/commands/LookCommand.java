@@ -9,7 +9,7 @@ public class LookCommand extends BaseAliaseCommand {
     private InputOutput io;
 
     public LookCommand(InputOutput io) {
-        super("l", "look","whereami","where am I","?donde estoy?");
+        super(io,"l", "look","whereami","where am I","?donde estoy?");
         this.io = io;
         //super("look", "You look around.", io);
     }

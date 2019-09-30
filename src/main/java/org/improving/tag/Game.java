@@ -17,6 +17,7 @@ public class Game {
     private Location startingLocation;
     private List<Location> locationList = new ArrayList<>(100);
     private final SaveGameFactory saveFactory;
+    private boolean loop = true;
 
     //constructor
     public Game(Command[] commands, InputOutput io, SaveGameFactory saveFactory) {
@@ -51,29 +52,37 @@ public Date getStartTime(){
     private void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
+    public void setLoop(boolean loop){
+        this.loop = loop;
+    }
+
     public void run ()  {
 
         this.setStartTime(new Date());
 
-        boolean loop = true;
-        while(loop) {
-            io.displayPrompt("> ");
-            String input = io.receiveInput();
-            Command validCommand = getValidCommand(input);
-            //put constant(something that always has certain value) first and whatever can change later
-            if(null != validCommand) {
-                validCommand.execute(input, this);
-            }else if (input.equalsIgnoreCase("exit")) {
-                saveFactory.save(this);
-                io.displayText("Goodbye.");
+        while (loop) {
+                io.displayPrompt("> ");
+                String input = io.receiveInput();
+                Command validCommand = getValidCommand(input);
+                //put constant(something that always has certain value) first and whatever can change later
+                if (null != validCommand) {
+                    validCommand.execute(input, this);
+                }else {
+                    io.displayText("Huh? I don't understand.");
+                }
+
+            }
+
+            //else if (
+            //input.equalsIgnoreCase("exit")) {
+                //saveFactory.save(this);
+                //io.displayText("Goodbye.");
                 //create a class about how to save the game
                 //create a class about a file system
                 //create a class about how to test a file system
-                loop =false;
-            }else {
-                io.displayText("Huh? I don't understand.");
-            }
-        }
+                //loop =false;
+            //}
+
         this.setEndTime(new Date());
     }
 
@@ -93,7 +102,6 @@ public Date getStartTime(){
 private Location buildWorld() {
         var tdh = new Location();
         tdh.setName("The Deathly Hallows");
-        tdh.setAdversary(new Adversary("Sauron"));
         this.locationList.add(tdh);
 
         var td = new Location();
@@ -130,6 +138,7 @@ private Location buildWorld() {
         var md = new Location();
         md.setName("Mount Doom");
         this.locationList.add(md);
+        md.setAdversary(new Adversary("Sauron"));
 
         var tr = new Location();
         tr.setName("The Reef");

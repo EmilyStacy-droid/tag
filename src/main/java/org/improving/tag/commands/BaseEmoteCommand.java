@@ -18,7 +18,7 @@ public abstract class BaseEmoteCommand extends BaseAliaseCommand {
 //    private List<String> aliases = new ArrayList<>();
     //constructor to get value from two strings and io
     public BaseEmoteCommand (String cmdResponse, InputOutput io, String...aliases) {
-        super(aliases);
+        super(io, aliases);
         //this.cmdText = cmdText;
         this.cmdResponse = cmdResponse;
         this.io = io;
