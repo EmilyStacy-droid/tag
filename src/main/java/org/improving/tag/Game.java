@@ -18,15 +18,9 @@ public class Game {
     private List<Location> locationList = new ArrayList<>(100);
     private final SaveGameFactory saveFactory;
 
-<<<<<<< HEAD
-    public Game(Command[] commands, InputOutput io, SaveGameFactory saveFactory) {
-=======
     //constructor
-    public Game(Command[] commands, InputOutput io) {
-        for (var command:commands){
-            System.out.println(command);
-        }
->>>>>>> addAliase
+    public Game(Command[] commands, InputOutput io, SaveGameFactory saveFactory) {
+
         startingLocation = buildWorld();
         this.commands = commands;
         this.io = io;
@@ -59,11 +53,8 @@ public Date getStartTime(){
     }
     public void run ()  {
 
-<<<<<<< HEAD
-=======
         this.setStartTime(new Date());
 
->>>>>>> addAliase
         boolean loop = true;
         while(loop) {
             io.displayPrompt("> ");
@@ -95,16 +86,6 @@ public Date getStartTime(){
         return null;
 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -196,3 +177,7 @@ private Location buildWorld() {
         return null;
     }
 }
+
+//for (var command:commands){
+//            System.out.println(command);
+//        }
