@@ -17,6 +17,7 @@ public class Main {
 
 
         Game game = context.getBean(Game.class); //hand in the cookie cutter;Look at Game=>constructor=>parameter=>find out what they need
+
         game.run();
 
         long elapsedTicks = game.getEndTime().getTime() -

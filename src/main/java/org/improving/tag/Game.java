@@ -11,48 +11,59 @@ import java.util.Scanner;
 public class Game {
     private Date startTime;
     private Date endTime;
-    private Command[] commands;
+    private Command[] commands; //created by Spring
     private InputOutput io;
     private Player p;
     private Location startingLocation;
     private List<Location> locationList = new ArrayList<>(100);
     private final SaveGameFactory saveFactory;
 
+<<<<<<< HEAD
     public Game(Command[] commands, InputOutput io, SaveGameFactory saveFactory) {
+=======
+    //constructor
+    public Game(Command[] commands, InputOutput io) {
+        for (var command:commands){
+            System.out.println(command);
+        }
+>>>>>>> addAliase
         startingLocation = buildWorld();
         this.commands = commands;
         this.io = io;
         this.p = new Player(startingLocation);
         this.saveFactory = saveFactory;
     }
-//get starting location
-    public Location getStartingLocation() {
+
+//set methods to get data from the fields
+    public Location getStartingLocation(){
         return startingLocation;
-    }
+}
 
-    public Player getPlayer() {
+public Player getPlayer(){
         return p;
-    }
+}
 
-    public Date getStartTime() {
+public Date getStartTime(){
         return startTime;
-    }
+}
 
-    private void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-   
     public Date getEndTime() {
         return endTime;
     }
-
+    //set private start time because it shouldn't be changed
+    private void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
     private void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
     public void run ()  {
+
+<<<<<<< HEAD
+=======
         this.setStartTime(new Date());
 
+>>>>>>> addAliase
         boolean loop = true;
         while(loop) {
             io.displayPrompt("> ");
@@ -78,11 +89,26 @@ public class Game {
     private Command getValidCommand(String input) {
         for(Command command: commands) {
             if(command.isValid(input, this)) {
-               return command;
+                return command;
             }
         }
         return null;
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 private Location buildWorld() {
         var tdh = new Location();
         tdh.setName("The Deathly Hallows");
