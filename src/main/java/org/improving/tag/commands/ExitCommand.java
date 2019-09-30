@@ -17,17 +17,21 @@ public class ExitCommand extends BaseAliaseCommand {
         this.saveFactory =saveFactory;
     }
 
+    public String getExitMessage(InputOutput io, Game game) {
+        this.io = io;
+        saveFactory.save(game);
+        return io.displayText("Goodbye.");
+    }
     @Override
     public String getCommandPart(String input) {
         var parts = input.split(" ");
         //if(parts.length ==1) return false;
         return parts[0];
     }
-
+   @Override
     public void childExecute(String input, Game game) {
-        game.setLoop(false);
-        saveFactory.save(game);
-        io.displayText("Goodbye.");
+
+
 
 
     };

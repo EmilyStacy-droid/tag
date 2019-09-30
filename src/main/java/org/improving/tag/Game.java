@@ -17,7 +17,8 @@ public class Game {
     private Location startingLocation;
     private List<Location> locationList = new ArrayList<>(100);
     private final SaveGameFactory saveFactory;
-    private boolean loop = true;
+
+
 
     //constructor
     public Game(Command[] commands, InputOutput io, SaveGameFactory saveFactory) {
@@ -52,14 +53,11 @@ public Date getStartTime(){
     private void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
-    public void setLoop(boolean loop){
-        this.loop = loop;
-    }
 
     public void run ()  {
 
         this.setStartTime(new Date());
-
+        boolean loop;
         while (loop) {
                 io.displayPrompt("> ");
                 String input = io.receiveInput();
@@ -67,7 +65,8 @@ public Date getStartTime(){
                 //put constant(something that always has certain value) first and whatever can change later
                 if (null != validCommand) {
                     validCommand.execute(input, this);
-                }else {
+                }
+                else {
                     io.displayText("Huh? I don't understand.");
                 }
 
