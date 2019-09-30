@@ -12,29 +12,20 @@ public class ExitCommand extends BaseAliaseCommand {
     private final SaveGameFactory saveFactory;
 
     public ExitCommand(InputOutput io, SaveGameFactory saveFactory) {
-        super(io,"exit","e");
+        super(io, "exit", "e");
         this.io = io;
-        this.saveFactory =saveFactory;
+        this.saveFactory = saveFactory;
     }
 
-    public String getExitMessage(InputOutput io, Game game) {
-        this.io = io;
-        saveFactory.save(game);
-        return io.displayText("Goodbye.");
-    }
+
     @Override
-    public String getCommandPart(String input) {
-        var parts = input.split(" ");
-        //if(parts.length ==1) return false;
-        return parts[0];
-    }
-   @Override
     public void childExecute(String input, Game game) {
-
-
-
-
-    };
-
-
+        saveFactory.save(game);
+        io.displayText("Goodbye.");
+        // Right here you need to do something which will exit the game
+        try {throw new RuntimeException();}
+        catch(Exception ex)
+        {game.getErrorMessage();}
+        ;
+    }
 }

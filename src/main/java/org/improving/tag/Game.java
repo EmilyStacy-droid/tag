@@ -53,11 +53,17 @@ public Date getStartTime(){
     private void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
+    public void childExecute(String input, Game game) { };
+
+
+    public String getErrorMessage() {
+        return "There is an error";
+    }
 
     public void run ()  {
 
         this.setStartTime(new Date());
-        boolean loop;
+        boolean loop = true;
         while (loop) {
                 io.displayPrompt("> ");
                 String input = io.receiveInput();
@@ -65,8 +71,13 @@ public Date getStartTime(){
                 //put constant(something that always has certain value) first and whatever can change later
                 if (null != validCommand) {
                     validCommand.execute(input, this);
+                    try {
+                        childExecute(input, this);
+                    }catch(Exception ex) {
+                        io.displayText(getErrorMessage());
+                    }
                 }
-                else {
+               else {
                     io.displayText("Huh? I don't understand.");
                 }
 

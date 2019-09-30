@@ -12,7 +12,7 @@ public abstract class BaseAliaseCommand implements Command {
     private List<String> aliases = new ArrayList<>();
     private final InputOutput io;
 
-    public BaseAliaseCommand(InputOutput io, String...aliases){
+    public BaseAliaseCommand(InputOutput io, String... aliases) {
         this.io = io;
         this.aliases.addAll(Arrays.asList(aliases));
     }
@@ -23,24 +23,30 @@ public abstract class BaseAliaseCommand implements Command {
         var trimmedInput = getCommandPart(input).trim();
         return aliases.stream().anyMatch(trimmedInput::equalsIgnoreCase);//for each loop works too
     }
-    public void childExecute(String input, Game game) { };
+
+    public void childExecute(String input, Game game) {
+    }
+
+    ;
 
     public String getErrorMessage() {
         return "Huh? I don't understand";
     }
+
     @Override
     public void execute(String input, Game game) {
         try {
             childExecute(input, game);
-        }catch(Exception ex) {
+        } catch (UnsupportedOperationException ex) {
             io.displayText(getErrorMessage());
         }
     }
-//execute is not needed because it is an abstract class
+
+    //execute is not needed because it is an abstract class
 //do some change for move=> get a pure return first
-public String getCommandPart(String input){
-    return input;
-}
+    public String getCommandPart(String input) {
+        return input;
+    }
 }
 
 
