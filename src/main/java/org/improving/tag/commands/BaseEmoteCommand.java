@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-<<<<<<< HEAD
-    public BaseEmoteCommand(String cmdText,String cmdResponse, InputOutput io){
-        this.cmdText = cmdText;
-=======
+//<<<<<<< HEAD
+//    public BaseEmoteCommand(String cmdText,String cmdResponse, InputOutput io){
+//        this.cmdText = cmdText;
+//=======
 public abstract class BaseEmoteCommand extends BaseAliaseCommand {
     private InputOutput io;
     //private String cmdText;
@@ -20,24 +20,22 @@ public abstract class BaseEmoteCommand extends BaseAliaseCommand {
     public BaseEmoteCommand (String cmdResponse, InputOutput io, String...aliases) {
         super(aliases);
         //this.cmdText = cmdText;
->>>>>>> addAliase
         this.cmdResponse = cmdResponse;
         this.io = io;
 
 //        this.aliases.addA
 //        ll(Arrays.asList(aliases));
     }
-<<<<<<< HEAD
-@Override
-  public boolean isValid(String input, Game game) {
-        //ternary operation <boolean>?<true>:<false>
-        //javascript: <variable>??<default>=> if variable is null, return default, if not, use variable
-       return (input==null?"":input).trim().equalsIgnoreCase(cmdText);
-    }
-=======
+//<<<<<<< HEAD
+//@Override
+//  public boolean isValid(String input, Game game) {
+//        //ternary operation <boolean>?<true>:<false>
+//        //javascript: <variable>??<default>=> if variable is null, return default, if not, use variable
+//       return (input==null?"":input).trim().equalsIgnoreCase(cmdText);
+//    }
+//=======
 
 
->>>>>>> addAliase
     @Override
     public void execute(String input, Game game) {
         io.displayText(cmdResponse);
