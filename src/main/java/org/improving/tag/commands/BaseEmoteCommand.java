@@ -9,7 +9,7 @@ public abstract class BaseEmoteCommand implements Command {
     private InputOutput io;
 
 
-    public BaseEmoteCommand(String cmdText, String cmdResponse, InputOutput io){
+    public BaseEmoteCommand(String cmdText,String cmdResponse, InputOutput io){
         this.cmdText = cmdText;
         this.cmdResponse = cmdResponse;
         this.io = io;
@@ -25,3 +25,4 @@ public abstract class BaseEmoteCommand implements Command {
         io.displayText(cmdResponse);
     }
 }
+
