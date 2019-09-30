@@ -14,11 +14,11 @@ public abstract class BaseEmoteCommand implements Command {
         this.cmdResponse = cmdResponse;
         this.io = io;
     }
-    @Override
-    public boolean isValid(String input, Game game) {
+@Override
+  public boolean isValid(String input, Game game) {
         //ternary operation <boolean>?<true>:<false>
         //javascript: <variable>??<default>=> if variable is null, return default, if not, use variable
-        return (input==null?"":input).trim().equalsIgnoreCase(cmdText);
+       return (input==null?"":input).trim().equalsIgnoreCase(cmdText);
     }
     @Override
     public void execute(String input, Game game) {
