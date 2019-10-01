@@ -1,5 +1,7 @@
 package org.improving.tag;
 
+import org.improving.tag.items.Item;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +59,7 @@ public class Location {
         return treasureChest.getDescription();
     }
 
-    public String getTreasure(){
-        return  treasureChest.getItemDescription();}
+    public Item getTreasure(){
+        return  treasureChest.getItems();}
 }
 

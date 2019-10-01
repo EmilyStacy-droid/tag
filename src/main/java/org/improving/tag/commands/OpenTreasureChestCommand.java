@@ -17,11 +17,12 @@ public class OpenTreasureChestCommand extends BaseAliaseCommand {
     }
     @Override
     public void childExecute(String input, Game game) {
-        if(game.getPlayer().getLocation().getTreasureDescription().equals("") == false){
-        io.displayText("You found" + game.getPlayer().getLocation().getTreasure());
-        }
-        else {
+        if(TreasureChest.NO_TREASURE.equals(TreasureChest)){
+            throw UnsupportedOperationException;
             io.displayText(getErrorMessage());
+        }
+        else if(game.getPlayer().getLocation().getTreasureDescription().equals("") == false){
+        io.displayText("You found" + game.getPlayer().getLocation().getTreasure());
         }
 
     }

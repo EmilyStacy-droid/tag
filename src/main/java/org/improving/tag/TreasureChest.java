@@ -18,8 +18,8 @@ public class TreasureChest {
         return description;
     }
 
-    public String getItemDescription(){
-        return item.getDescription();
+    public Item getItems(){
+        return item;
     }
 
 }
