@@ -10,6 +10,8 @@ public class Location {
     private List<String> tags = new ArrayList<>();
     private List<Exit> exits = new ArrayList<>();
     private Adversary adversary;
+    private TreasureChest treasureChest = TreasureChest.NO_TREASURE;
+
 
     public Adversary getAdversary() {
         return adversary;
@@ -46,7 +48,16 @@ public class Location {
     }
 
 
+    public void setTreasureChest(TreasureChest treasureChest) {
+        this.treasureChest = treasureChest;
+    }
 
 
+    public String getTreasureDescription() {
+        return treasureChest.getDescription();
+    }
+
+    public String getTreasure(){
+        return  treasureChest.getItemDescription();}
 }
 

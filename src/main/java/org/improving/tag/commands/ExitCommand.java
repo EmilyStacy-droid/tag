@@ -1,6 +1,7 @@
 package org.improving.tag.commands;
 
 import org.improving.tag.Game;
+import org.improving.tag.GameExitException;
 import org.improving.tag.InputOutput;
 import org.improving.tag.SaveGameFactory;
 import org.springframework.stereotype.Component;
@@ -23,6 +24,6 @@ public class ExitCommand extends BaseAliaseCommand {
         saveFactory.save(game);
         io.displayText("Goodbye.");
         // Right here you need to do something which will exit the game
-        throw new RuntimeException();
+        throw new GameExitException();
     }
 }

@@ -5,5 +5,7 @@ public interface InputOutput {
 
      void displayText(String text);
 
+     void displayNewLine();
+
      void displayPrompt(String prompt);
 }

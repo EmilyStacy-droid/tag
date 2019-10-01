@@ -14,6 +14,10 @@ public class TestInputOutput implements InputOutput {
     }
 
     @Override
+    public void displayNewLine() {
+    }
+
+    @Override
     public void displayPrompt(String prompt) {
 
     }
