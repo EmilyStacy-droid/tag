@@ -15,6 +15,8 @@ public class InventoryCommand extends BaseAliaseCommand {
     public void childExecute(String input, Game game){
         if (game.getPlayer().getInventory().isEmpty()) {
             io.displayText("You are carrying nothing.");
+        }else {
+            io.displayText(game.getPlayer().getInventory().getInventoryDisplay());
         }
     }
 }

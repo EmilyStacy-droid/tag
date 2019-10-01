@@ -20,9 +20,8 @@ public class OpenTreasureChestCommand extends BaseAliaseCommand {
     public void childExecute(String input, Game game) {
         Item item = game.getPlayer().getLocation().openTreasureChest();
         io.displayText("You found" + item);
-//        else {
-//            io.displayText(getErrorMessage());
-//        }
+        game.getPlayer().getInventory().addItem(item);
+
 
     }
     @Override

@@ -10,7 +10,7 @@ public class Adversary {
         this.adversaryName = adversaryName;
         this.hitPoints = 100;
         this.damageTakenProperty = 0;
-        this.attackDamageProperty = 10;
+        this.attackDamageProperty = 30;
     }
 
     public String getName() {
