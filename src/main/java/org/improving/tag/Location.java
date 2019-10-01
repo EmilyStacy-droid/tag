@@ -1,5 +1,7 @@
 package org.improving.tag;
 
+import org.improving.tag.items.Item;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,15 @@ public class Location {
 
     public Adversary getAdversary() {
         return adversary;
+    }
+
+    public Item openTreasureChest(){
+        if(TreasureChest.NO_TREASURE.equals(treasureChest)) {
+            throw new UnsupportedOperationException();
+        }
+        Item treasure = treasureChest.getItem();
+        treasureChest = TreasureChest.NO_TREASURE;
+        return treasure;
     }
 
     public void setAdversary(Adversary adversary) {
@@ -53,11 +64,12 @@ public class Location {
     }
 
 
-    public String getTreasureDescription() {
-        return treasureChest.getDescription();
+    public TreasureChest gettreasureChest() {
+        return treasureChest;
     }
 
-    public String getTreasure(){
-        return  treasureChest.getItemDescription();}
+    public Item getTreasure(){
+        return  treasureChest.getItem();
+    }
 }
 

@@ -7,10 +7,10 @@ public enum UniqueItems implements Item {
     THE_ONE_RING("A golden ring"),
     BLUE_SHELL("A blue shell with wings"),
     NOTHING(""){
-        @Override
-        public String getDescription() {
-            throw new UnsupportedOperationException();
-        }
+//        @Override
+//        public String getDescription() {
+//            throw new UnsupportedOperationException();
+//        }
     };
     private String description;
 
@@ -19,10 +19,14 @@ public enum UniqueItems implements Item {
         this.description = description;
 
     }
+//@Override
+//    public String getDescription(){
+//        return description;
+//    }
 @Override
-    public String getDescription(){
+    public String toString(){
         return description;
-    }
+}
 
 }
 
