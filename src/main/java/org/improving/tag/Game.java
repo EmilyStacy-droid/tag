@@ -69,13 +69,12 @@ public Date getStartTime(){
                 String input = io.receiveInput();
                 Command validCommand = getValidCommand(input);
                 //put constant(something that always has certain value) first and whatever can change later
-                if (null != validCommand) {
-                    validCommand.execute(input, this);
-                    try {
-                        childExecute(input, this);
-                    }catch(Exception ex) {
-                        io.displayText(getErrorMessage());
-                    }
+
+            if (null != validCommand) {
+                   try {validCommand.execute(input, this); }
+                   catch(Exception ex){
+                       loop = false;
+                }
                 }
                else {
                     io.displayText("Huh? I don't understand.");

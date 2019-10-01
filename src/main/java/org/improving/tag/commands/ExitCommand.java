@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 public class ExitCommand extends BaseAliaseCommand {
     private InputOutput io;
-    private final SaveGameFactory saveFactory;
+    private final SaveGameFactory saveFactory; //add final to make sure errors occur when it is not called
 
     public ExitCommand(InputOutput io, SaveGameFactory saveFactory) {
         super(io, "exit", "e");
@@ -23,9 +23,6 @@ public class ExitCommand extends BaseAliaseCommand {
         saveFactory.save(game);
         io.displayText("Goodbye.");
         // Right here you need to do something which will exit the game
-        try {throw new RuntimeException();}
-        catch(Exception ex)
-        {game.getErrorMessage();}
-        ;
+        throw new RuntimeException();
     }
 }
