@@ -1,10 +1,13 @@
 package org.improving.tag;
 
+import java.util.BitSet;
+
 public class Player {
     //the following three lines: default:so that the name value cannot be changed anytime;future-proofing
     private String name = "The player";
     private int hitPoints = 100;
     private Location location;
+    private Inventory inventory = new Inventory();
 
 //initial location
     public Player(Location location) {
@@ -25,4 +28,8 @@ public class Player {
     public int getHitPoints() { return hitPoints; }
 
     public void setHitPoints(int hitPoints) { this.hitPoints = hitPoints; }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
 }

@@ -12,14 +12,23 @@ public class TreasureChest {
         this.item = item;
         this.description = description;
     }
+//    public void setTreasureChest(TreasureChest treasureChest) {
+//        this.treasureChest=treasureChest;
+//    }
 
 
     public String getDescription() {
         return description;
     }
 
-    public Item getItems(){
-        return item;
+
+    @Override
+
+    public String toString(){
+        return description;
     }
 
+    public Item getItem() {
+        return item;
+    }
 }

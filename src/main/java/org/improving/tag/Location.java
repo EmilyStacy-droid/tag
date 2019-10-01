@@ -19,6 +19,15 @@ public class Location {
         return adversary;
     }
 
+    public Item openTreasureChest(){
+        if(TreasureChest.NO_TREASURE.equals(treasureChest)) {
+            throw new UnsupportedOperationException();
+        }
+        Item treasure = treasureChest.getItem();
+        treasureChest = TreasureChest.NO_TREASURE;
+        return treasure;
+    }
+
     public void setAdversary(Adversary adversary) {
         this.adversary = adversary;
 
@@ -55,11 +64,12 @@ public class Location {
     }
 
 
-    public String getTreasureDescription() {
-        return treasureChest.getDescription();
+    public TreasureChest gettreasureChest() {
+        return treasureChest;
     }
 
     public Item getTreasure(){
-        return  treasureChest.getItems();}
+        return  treasureChest.getItem();
+    }
 }
 

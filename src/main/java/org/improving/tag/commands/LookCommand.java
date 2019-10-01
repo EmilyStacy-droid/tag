@@ -19,7 +19,7 @@ public class LookCommand extends BaseAliaseCommand {
         var location = game.getPlayer().getLocation();
         io.displayText(location.getName());
         io.displayText(location.getDescription());
-        io.displayText(location.getTreasureDescription());
+        io.displayText(location.gettreasureChest());
         io.displayNewLine();
         io.displayText("Exit:");
 

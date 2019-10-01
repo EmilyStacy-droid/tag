@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public abstract class BaseAliaseCommand implements Command {
     private List<String> aliases = new ArrayList<>();
-    private final InputOutput io;
+    protected final InputOutput io;
 
     public BaseAliaseCommand(InputOutput io, String... aliases) {
         this.io = io;

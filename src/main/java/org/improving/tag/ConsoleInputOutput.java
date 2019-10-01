@@ -14,8 +14,8 @@ public class ConsoleInputOutput implements InputOutput {
     @Override
     public String receiveInput(){return scanner.nextLine(); }
     @Override
-    public void displayText(String text) {
-       if(!"".equals(text)){
+    public void displayText(Object text) {
+       if(!"".equals(text.toString())){
            System.out.println(text);
        }
     }

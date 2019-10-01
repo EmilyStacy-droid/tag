@@ -3,6 +3,7 @@ package org.improving.tag.commands;
 import org.improving.tag.Game;
 import org.improving.tag.InputOutput;
 import org.improving.tag.TreasureChest;
+import org.improving.tag.items.Item;
 import org.improving.tag.items.UniqueItems;
 import org.springframework.stereotype.Component;
 
@@ -17,13 +18,11 @@ public class OpenTreasureChestCommand extends BaseAliaseCommand {
     }
     @Override
     public void childExecute(String input, Game game) {
-        if(TreasureChest.NO_TREASURE.equals(TreasureChest)){
-            throw UnsupportedOperationException;
-            io.displayText(getErrorMessage());
-        }
-        else if(game.getPlayer().getLocation().getTreasureDescription().equals("") == false){
-        io.displayText("You found" + game.getPlayer().getLocation().getTreasure());
-        }
+        Item item = game.getPlayer().getLocation().openTreasureChest();
+        io.displayText("You found" + item);
+//        else {
+//            io.displayText(getErrorMessage());
+//        }
 
     }
     @Override
