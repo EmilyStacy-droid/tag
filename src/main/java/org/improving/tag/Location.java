@@ -43,7 +43,7 @@ public class Location {
         this.adversary = adversary;
 
     }
-    
+
     public String getName() {
         return name;
     }

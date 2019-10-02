@@ -130,6 +130,7 @@ public class Game {
         var ta = new Location();
         ta.setName("The Amazon");
         this.locationList.add(ta);
+        ta.setAdversary(new Adversary("Grumpy Cat", UniqueItems.Meowing));
 
         var tmcs = new Location();
         tmcs.setName("The Mac & Cheese shop");
@@ -158,7 +159,6 @@ public class Game {
         var md = new Location();
         md.setName("Mount Doom");
         this.locationList.add(md);
-        //md.setAdversary(new Adversary("Sauron", UniqueItems.Sauron_Fire));
 
         var tr = new Location();
         tr.setName("The Reef");
