@@ -82,6 +82,10 @@ public class Game {
                     validCommand.execute(input, this);
                 } catch (GameExitException ex) {
                     loop = false;
+                }catch(AdversaryRemoveException ex) {
+                    io.displayText("You shall proceed.");
+                    this.getPlayer().getLocation().removeAdversary(this);
+
                 }
             } else {
                 io.displayText("Huh? I don't understand.");
@@ -117,6 +121,7 @@ public class Game {
         var tdh = new Location();
         tdh.setName("The Deathly Hallows");
         this.locationList.add(tdh);
+        tdh.setAdversary(new Adversary("Sauron", UniqueItems.Sauron_Fire));
 
         var td = new Location();
         td.setName("The Desert");
@@ -153,7 +158,7 @@ public class Game {
         var md = new Location();
         md.setName("Mount Doom");
         this.locationList.add(md);
-        md.setAdversary(new Adversary("Sauron"));
+        //md.setAdversary(new Adversary("Sauron", UniqueItems.Sauron_Fire));
 
         var tr = new Location();
         tr.setName("The Reef");

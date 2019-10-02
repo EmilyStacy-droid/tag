@@ -5,6 +5,7 @@ import java.util.Map;
 
 public enum UniqueItems implements Item {
     THE_ONE_RING("A golden ring"),
+    Sauron_Fire("Sauron's fire"),
     BLUE_SHELL("A blue shell with wings"),
     NOTHING(""){
 //        @Override

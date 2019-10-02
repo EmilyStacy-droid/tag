@@ -22,6 +22,8 @@ public class Player {
         this.location = location;
     }
 
+
+
     public String getName(){return name;}
     public void setName(String name) {this.name = name;}
 

@@ -1,6 +1,7 @@
 package org.improving.tag;
 
 import org.improving.tag.items.Item;
+import org.improving.tag.items.UniqueItems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +14,13 @@ public class Location {
     private List<Exit> exits = new ArrayList<>();
     private Adversary adversary;
     private TreasureChest treasureChest = TreasureChest.NO_TREASURE;
+    private Inventory inventory;
 
 
     public Adversary getAdversary() {
         return adversary;
     }
+
 
     public Item openTreasureChest(){
         if(TreasureChest.NO_TREASURE.equals(treasureChest)) {
@@ -28,10 +31,24 @@ public class Location {
         return treasure;
     }
 
+    public Item openAdversaryItem(){
+        Item adversaryItem = adversary.getItem();
+        //remove the adversary
+        //get adversaryItem to inventory
+        return adversaryItem;
+    }
+
+
     public void setAdversary(Adversary adversary) {
         this.adversary = adversary;
 
     }
+
+   public void removeAdversary(Game game) {
+        game.getPlayer().getLocation().getAdversary().equals(null);
+       
+   }
+
 
     public String getName() {
         return name;
@@ -71,5 +88,8 @@ public class Location {
     public Item getTreasure(){
         return  treasureChest.getItem();
     }
+
+
 }
+
 

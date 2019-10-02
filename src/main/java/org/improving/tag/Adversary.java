@@ -1,21 +1,32 @@
 package org.improving.tag;
 
+import org.improving.tag.items.Item;
+
+import org.improving.tag.items.UniqueItems;
+
 public class Adversary {
     private String adversaryName;
     private int hitPoints;
     private int damageTakenProperty;
     private int attackDamageProperty;
+    private UniqueItems adversaryItem;
 
-    public Adversary(String adversaryName) {
+    public Adversary(String adversaryName, UniqueItems adversaryItem)  {
         this.adversaryName = adversaryName;
         this.hitPoints = 100;
         this.damageTakenProperty = 0;
         this.attackDamageProperty = 30;
+        this.adversaryItem = adversaryItem;
     }
+
+
+
 
     public String getName() {
         return adversaryName;
     }
+
+    public String getAdversaryItemDescription() {return adversaryItem.toString();}
 
     public void setName(String adversaryName) {
         this.adversaryName = adversaryName;
@@ -43,5 +54,10 @@ public class Adversary {
 
     public void setAttackDamageProperty(int attackDamageProperty) {
         this.attackDamageProperty = attackDamageProperty;
+    }
+
+
+    public Item getItem() {
+        return adversaryItem;
     }
 }
