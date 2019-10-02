@@ -3,6 +3,7 @@ package org.improving.tag;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Exit {
     private String name;
@@ -42,17 +43,21 @@ public class Exit {
         return this.getName();
     }
 
-    @Override
-    //no perfect answer to answer override equal; the only trustable one is java.lang.object
-    public boolean equals(Object obj) {
-        if (obj instanceof Exit) {
-            Exit exit = (Exit) obj;
-            return this.getName().equals(exit.getName()) &&
-                    this.getDestination().equals(exit.getDestination());
-        } else {
-            return super.equals(obj);
-        }
-    }
+//IDE intelli j can generate it=>don't lose objects in collection
+// if there is an equal, use hashcode
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Exit exit = (Exit) o;
+//        return name.equals(exit.name) &&
+//                destination.equals(exit.destination);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(name, destination);
+//    }
 
     public boolean equalsLocation(Object obj){
         if(obj instanceof Location) {

@@ -35,7 +35,7 @@ public class AttackCommand extends BaseAliaseCommand {
         if (ranN <= 20) {
             adversary.setHitPoints(adversary.getHitPoints() - 50);
             damage = damage + 50;
-            io.displayText("Sauron's remaining point is " + adversary.getHitPoints());
+            io.displayText(adversary.getName()+ " remaining point is " + adversary.getHitPoints());
             if (adversary.getHitPoints() <= 0) {
                 io.displayText("You got an item: " + adversary.getAdversaryItemDescription());
                 game.getPlayer().getInventory().addItem(adversary.getItem());

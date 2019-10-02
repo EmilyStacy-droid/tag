@@ -42,6 +42,8 @@ public class ExitTests {
         assertTrue(result);
 
     }
+
+
     @Test
     public void equals_should_be_false_when_compared_to_non_exit() {
         //if there are two doors with same name and destination they are equal
