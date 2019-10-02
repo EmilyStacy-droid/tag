@@ -84,7 +84,7 @@ public class Game {
                     loop = false;
                 }catch(AdversaryRemoveException ex) {
                     io.displayText("You shall proceed.");
-                    this.getPlayer().getLocation().removeAdversary(this);
+                    this.getPlayer().getLocation().setAdversary(null);
 
                 }
             } else {

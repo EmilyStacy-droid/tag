@@ -43,13 +43,7 @@ public class Location {
         this.adversary = adversary;
 
     }
-
-   public void removeAdversary(Game game) {
-        game.getPlayer().getLocation().getAdversary().equals(null);
-       
-   }
-
-
+    
     public String getName() {
         return name;
     }
