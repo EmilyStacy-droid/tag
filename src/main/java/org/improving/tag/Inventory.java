@@ -6,7 +6,8 @@ import org.improving.tag.items.UniqueItems;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 
 public class Inventory {
@@ -29,10 +30,17 @@ public class Inventory {
 
     public String getInventoryDisplay() {
         String displayString = " Your have these items:";
-        items.sort(new ItemComparator());
-        for(Item item: items) {
-            displayString += "\n" + item;
-        }
-        return displayString;
+        //bad solution
+//        var itemNames = items.stream().map(i->i.getName()).sorted().collect(Collectors.toList());
+//        itemNames.stream().map(n ->  items.stream().reduce(null, (ans,i) -> ans = (i.getName().equals(n) ?  i : null) == null && ans != null ? ans : null ))
+                //.;
+        return items.stream().sorted(new ItemComparator()).map(i -> "\n" +i).
+                reduce(displayString,(answer, itemValue) -> answer+=itemValue );
+        //newItems.forEach(n -> );
+//        items.sort(new ItemComparator());
+//        for(Item item: items) {
+          // displayString += "\n" + newItems;
+//        }
+        //return displayString + itemNames;
     }
 }

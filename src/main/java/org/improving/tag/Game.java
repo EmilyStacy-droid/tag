@@ -4,10 +4,8 @@ import org.improving.tag.commands.*;
 import org.improving.tag.items.UniqueItems;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Stream;
 
 @Component
 public class Game {
@@ -107,13 +105,18 @@ public class Game {
     }
 
     private Command getValidCommand(String input) {
-        for (Command command : commands) {
-            if (command.isValid(input, this)) {
-                return command;
-            }
-        }
-        return null;
+        //List <Commands> commands = commands;
+       Arrays.asList(commands).stream().filter(c -> c.isValid(input,this));
+//           for (Command command : commands) {
+//         if (command.isValid(input, this)) {
+//               return command;
+//            }
+//        }
 
+      //  return null;
+        //Array.asList(command)
+        //return null;
+         return Stream.of(commands).filter(c -> c.isValid(input,this)).findFirst().orElseGet(null);
     }
 
 
