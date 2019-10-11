@@ -2,6 +2,7 @@
 
 import org.improving.tag.Game;
 import org.improving.tag.Player;
+import org.improving.tag.WorldBuilder;
 import org.improving.tag.commands.MoveCommand;
 import org.improving.tag.commands.setNameCommand;
 import org.junit.jupiter.api.BeforeEach;
@@ -57,7 +58,7 @@ public class SetNameTest {
     @Test
     public void execute_should_display_all_words_with_spaces(){
         //Act
-        target.execute("  @setname=Fluefedor  ", new Game(null,null, null));
+        target.execute("  @setname=Fluefedor  ", new Game(null,null, null, null));
         //Assert
         assertEquals("Your name is now Fluefedor.", io.lastText);
     }
