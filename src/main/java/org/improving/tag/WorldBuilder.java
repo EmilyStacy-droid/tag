@@ -1,6 +1,8 @@
 package org.improving.tag;
 
 
+import org.improving.tag.Database.ExitDAO;
+import org.improving.tag.Database.LocationDAO;
 import org.improving.tag.items.UniqueItems;
 import org.springframework.stereotype.Component;
 
@@ -9,14 +11,45 @@ import java.util.List;
 
 @Component
 public class WorldBuilder {
-    private final List<Location> locationList = new ArrayList<>();
+    private final LocationDAO locationDAO;
+    private final ExitDAO exitDAO;
+    private List<Location> locationList = new ArrayList<>();
+    private List<Exit> exits = new ArrayList<>();
+    public WorldBuilder (LocationDAO locationDAO, ExitDAO exitDAO) {
+        this.locationDAO = locationDAO;
+        this.exitDAO = exitDAO;
+    }
+
+    public Location buildWorld() {
+        try {
+            List <Location> locations = locationDAO.findAll();
+            for (Location location: locations) {
+                List<Exit> exits = exitDAO.findByOriginId(location.getId());
+                exits.forEach(exit-> {Location destination = locations.stream()
+                                        .filter(locat -> locat.getId() == exit.getDestinationId())
+                                        .findFirst()
+                                        .orElse(null);
+                exit.setDestination(location);
+                location.addExit(exit);
+
+                });
+            }
+            System.out.println(locations.size());
+            locationList = locations;
+            return locationList.get(0);
+        }catch(Exception e) {
+            return buildHardCodedWorld();
+        }
+    }
 
     public List<Location> getLocationList() {
         return locationList;
     }
 
-    public Location buildWorld() {
 
+    public Location buildHardCodedWorld() {
+        //locationList = locationDAO.findAll();
+        //Location location = locationList.get(0);
         var tdh = new Location();
         tdh.setName("The Deathly Hallows");
         this.locationList.add(tdh);

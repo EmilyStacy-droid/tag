@@ -11,6 +11,9 @@ public class Adversary {
     private int attackDamageProperty;
     private UniqueItems adversaryItem;
 
+    public Adversary() {
+    }
+
     public Adversary(String adversaryName, UniqueItems adversaryItem)  {
         this.adversaryName = adversaryName;
         this.hitPoints = 100;
@@ -59,5 +62,9 @@ public class Adversary {
 
     public Item getItem() {
         return adversaryItem;
+    }
+
+    public void setAdversaryItem(UniqueItems adversaryItem) {
+        this.adversaryItem = adversaryItem;
     }
 }

@@ -7,6 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Location {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
     private String name="";
     private String description = "";
     //declaration                 appointment
@@ -81,6 +90,11 @@ public class Location {
 
     public Item getTreasure(){
         return  treasureChest.getItem();
+    }
+
+
+    public void addExit(Exit exit) {
+        this.exits.add(exit);
     }
 
 

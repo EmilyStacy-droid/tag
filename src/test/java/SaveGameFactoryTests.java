@@ -1,3 +1,5 @@
+import org.improving.tag.Database.ExitDAO;
+import org.improving.tag.Database.LocationDAO;
 import org.improving.tag.FileSystemAdapter;
 import org.improving.tag.Game;
 import org.improving.tag.SaveGameFactory;
@@ -17,6 +19,8 @@ import static org.mockito.Mockito.*;
 public class SaveGameFactoryTests {
     private TestInputOutput io;
     private FileSystemAdapter fsa;
+    private LocationDAO ldao;
+    private ExitDAO edao;
     private SaveGameFactory target;
     private Game g;
 @BeforeEach
@@ -24,7 +28,7 @@ public void setup() {
     io = new TestInputOutput();
     fsa = mock(FileSystemAdapter.class);
     target = new SaveGameFactory(fsa, io);
-    g = new Game(null, io, target, new WorldBuilder());
+    g = new Game(null, io, target, new WorldBuilder(ldao, edao));
 }
     @Test
     public void save_should_perserve_location_name() throws IOException {

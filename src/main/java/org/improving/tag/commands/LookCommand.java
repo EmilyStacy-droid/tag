@@ -24,7 +24,8 @@ public class LookCommand extends BaseAliaseCommand {
         io.displayText("Exit:");
 
         for(var exit: location.getExits()){
-            io.displayText("  "+ exit.getName());
+            //check buildworld
+            io.displayText("  "+ exit.getName() + " to " + exit.getDestination().getName());
         }
     }
 }

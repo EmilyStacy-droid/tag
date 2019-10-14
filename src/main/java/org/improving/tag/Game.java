@@ -107,6 +107,8 @@ public class Game {
     private Command getValidCommand(String input) {
         //List <Commands> commands = commands;
        Arrays.asList(commands).stream().filter(c -> c.isValid(input,this));
+        return Stream.of(commands).filter(c -> c.isValid(input,this)).findFirst().orElseGet(null);
+        //if(Arrays.asList(commands).getClass(null)) throw new RuntimeException();
 //           for (Command command : commands) {
 //         if (command.isValid(input, this)) {
 //               return command;
@@ -116,7 +118,6 @@ public class Game {
       //  return null;
         //Array.asList(command)
         //return null;
-         return Stream.of(commands).filter(c -> c.isValid(input,this)).findFirst().orElseGet(null);
     }
 
     public Location getLocationOf(final String intendedLocationName) {
