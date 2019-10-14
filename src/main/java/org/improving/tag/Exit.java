@@ -1,10 +1,11 @@
 package org.improving.tag;
 
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-
+@Entity(name = "exits" )
 public class Exit {
     private String name;
     private Location destination;

@@ -83,7 +83,6 @@ public class Game {
                 }catch(AdversaryRemoveException ex) {
                     io.displayText("You shall proceed.");
                     this.getPlayer().getLocation().setAdversary(null);
-
                 }
             } else {
                 io.displayText("Huh? I don't understand.");
@@ -107,7 +106,7 @@ public class Game {
     private Command getValidCommand(String input) {
         //List <Commands> commands = commands;
        Arrays.asList(commands).stream().filter(c -> c.isValid(input,this));
-        return Stream.of(commands).filter(c -> c.isValid(input,this)).findFirst().orElseGet(null);
+        return Stream.of(commands).filter(c -> c.isValid(input,this)).findFirst().orElse(null);
         //if(Arrays.asList(commands).getClass(null)) throw new RuntimeException();
 //           for (Command command : commands) {
 //         if (command.isValid(input, this)) {
