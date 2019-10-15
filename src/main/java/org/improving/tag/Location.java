@@ -3,11 +3,19 @@ package org.improving.tag;
 import org.improving.tag.items.Item;
 import org.improving.tag.items.UniqueItems;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity (name = "location")
 public class Location {
-    public int getId() {
+    @ManyToOne
+    @JoinColumn (name= "AdversaryId")
+    private Adversary adversary;
+
+    @Id
+    int id;
+        public int getId() {
         return id;
     }
 
@@ -15,14 +23,17 @@ public class Location {
         this.id = id;
     }
 
-    private int id;
+    @Column(name = "Name")
     private String name="";
+
+    @Column(name = "Description")
     private String description = "";
     //declaration                 appointment
-    private List<String> tags = new ArrayList<>();
+    @Transient
     private List<Exit> exits = new ArrayList<>();
-    private Adversary adversary;
+    @Transient
     private TreasureChest treasureChest = TreasureChest.NO_TREASURE;
+    @Transient
     private Inventory inventory;
 
 
@@ -69,10 +80,6 @@ public class Location {
         this.description = description;
     }
 
-    public List<String> getTags() {
-        return tags;
-    }
-
 
     public List<Exit> getExits() {
         return exits;
@@ -96,7 +103,19 @@ public class Location {
     public void addExit(Exit exit) {
         this.exits.add(exit);
     }
+@Override
+    public String toString(){
+        return this.getName();
+}
 
+@Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Location) {
+            Location location = (Location) obj;
+            return this.getName().equals(location.getName());
+        }
+        return super.equals(obj);
+}
 
 }
 

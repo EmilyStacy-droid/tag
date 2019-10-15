@@ -20,31 +20,34 @@ public class LocationDAO {
     public LocationDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
+    
     public List<Location> findAll(){
         try {
-            List<Location> locations = jdbcTemplate.query("SELECT l.Id as LocId, l.Name as LocName, l.Description, l.AdversaryId, a.Id as AdvId, a.Name as AdvName, a.HitPoints, a.DamageTaken, a.AttackDamage, a.DropItem FROM location l LEFT JOIN adversary a ON l.AdversaryId = a.Id",
-                    (result, rowNum) -> {
-                Location location = new Location();
-                location.setId(result.getInt("LocId"));
-                location.setName(result.getString("LocName"));
-                location.setDescription(result.getString("Description"));
 
-                if (result.getString("AdversaryId") != null) {
-                    EntityManager em = JPAUtility.getEntityManager();
-                    em.find(Adversary.class, result.getString("AdversaryId"));
-                    Adversary adversary = new Adversary();
-                    location.setAdversary(adversary);
-                    System.out.println("adversary is set as " + adversary.getName());
-                }
-
-
-                        return location;
-
-            });
+            EntityManager em = JPAUtility.getEntityManager();
+            em.getTransaction().begin();
+            List <Location> locations = em.createQuery("SELECT loc FROM org.improving.tag.Location loc").getResultList();
+//            List<Location> locations = jdbcTemplate.query("SELECT l.Id as LocId, l.Name as LocName, l.Description, l.AdversaryId, a.Id as AdvId, a.Name as AdvName, a.HitPoints, a.DamageTaken, a.AttackDamage, a.DropItem FROM location l LEFT JOIN adversary a ON l.AdversaryId = a.Id",
+//                    (result, rowNum) -> {
+//                Location location = new Location();
+//                location.setId(result.getInt("LocId"));
+//                location.setName(result.getString("LocName"));
+//                location.setDescription(result.getString("Description"));
+//                for(int i = 0; i < locations.size(); i++) {
+//
+//                    if ( locations.get(i).getAdversary() != null){
+//                        //em = JPAUtility.getEntityManager();
+//                        Adversary adversary = em.find(Adversary.class, locations.get(i).getAdversary().);
+//                        locations.get(i).setAdversary(adversary);
+//                        System.out.println("adversary is set as " + locations.get(i).getAdversary().getName());
+//                    }
+//                    //return location;
+//                }
+                em.getTransaction().commit();
+            System.out.println(" we are at " + locations.get(2).getName());
             return locations;
         }
-        catch(DataAccessException ex) {
+        catch(Exception ex) {
             System.out.println("Exception in JDBC: " + ex.getMessage());
             return null;
         }

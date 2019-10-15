@@ -1,12 +1,12 @@
 package org.improving.tag;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-@Entity(name = "exits" )
 public class Exit {
+
     private String name;
     private Location destination;
     private List<String> aliases = new ArrayList<>();
@@ -95,7 +95,13 @@ public class Exit {
 //        locations.filter (location.getId() == exit.getDestinationId()
 //    }
 
-
+//    @PostLoad
+//    public void postLoad() {
+//        if(null !=aliases) {
+//           this.getAliases(Arrays.stream(aliases.replace(" ","").split(",")
+//                   .forEach(alias->this.addAlias(alias))));
+//        }
+//    }
 
 
 }

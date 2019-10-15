@@ -5,6 +5,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityManager;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,17 +19,15 @@ public class ExitDAO {
 
     public List<Exit> findByOriginId(int originId) {
         try {
-            List<Exit> exits = jdbcTemplate.query("select * from exits = ?", new Object[] {originId},
+            List<Exit> exits = jdbcTemplate.query("select * from exits where originId = ? ", new Object[] {originId},
                     (result, rowNum) -> {
                         Exit exit = new Exit();
                         exit.setName(result.getString("Name"));
-                        //test this line by throwing a null
-                        //exit.getAliases(Arrays.asList(result.getArray("Aliases")).toString();
+                        exit.setDestinationId(result.getInt("DestinationId"));
                      String aliases = result.getString("Aliases");
-                      if(null !=aliases) {
-                          Arrays.stream(aliases.replace(" ","").split(","))
-                                  .forEach(alias->exit.addAlias(alias));
-                      }
+                        if(null !=aliases) {
+                     Arrays.stream(aliases.replace(" ","").split(",")).forEach(alias->exit.addAlias(alias));
+        }
                         return exit;
                     } );
             return exits;

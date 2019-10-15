@@ -17,6 +17,7 @@ public class Player {
     public Location getLocation() {
         return location;
     }
+
 //take charge of setting location after the initial location
     public void setLocation(Location location) {
         this.location = location;

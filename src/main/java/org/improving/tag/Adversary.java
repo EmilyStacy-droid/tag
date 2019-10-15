@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class Adversary {
     @Id
     long Id;
-    @Column(name = "AdvName")
+    @Column(name = "Name")
     private String adversaryName;
     @Column(name = "HitPoints")
     private int hitPoints;
