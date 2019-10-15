@@ -29,7 +29,7 @@ public class Location {
     @Column(name = "Description")
     private String description = "";
     //declaration                 appointment
-    @Transient
+    @OneToMany(mappedBy = "origin")
     private List<Exit> exits = new ArrayList<>();
     @Transient
     private TreasureChest treasureChest = TreasureChest.NO_TREASURE;

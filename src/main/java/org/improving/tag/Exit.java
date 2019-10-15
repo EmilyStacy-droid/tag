@@ -5,11 +5,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+@Entity(name = "exits" )
 public class Exit {
 
+    @Id
+    int Id;
+
+    @ManyToOne
+    @JoinColumn(name = "OriginId")
+    private Location origin;
+
+    @Column(name = "Name")
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "DestinationId")
     private Location destination;
+
+
+    @Transient
     private List<String> aliases = new ArrayList<>();
+
     private int destinationId;
 
     public int getDestinationId() {
@@ -103,5 +119,14 @@ public class Exit {
 //        }
 //    }
 
+    @Column (name = "Aliases")
+    private String csvAliases;
+@PostLoad
+    public void postLoad() {
+
+        if(null !=csvAliases) {
+            Arrays.stream(csvAliases.replace(" ","").split(",")).forEach(alias->aliases.add(alias));
+        }
+    }
 
 }

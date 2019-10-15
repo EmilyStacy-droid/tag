@@ -19,17 +19,16 @@ public class ExitDAO {
 
     public List<Exit> findByOriginId(int originId) {
         try {
-            List<Exit> exits = jdbcTemplate.query("select * from exits where originId = ? ", new Object[] {originId},
-                    (result, rowNum) -> {
-                        Exit exit = new Exit();
-                        exit.setName(result.getString("Name"));
-                        exit.setDestinationId(result.getInt("DestinationId"));
-                     String aliases = result.getString("Aliases");
-                        if(null !=aliases) {
-                     Arrays.stream(aliases.replace(" ","").split(",")).forEach(alias->exit.addAlias(alias));
-        }
-                        return exit;
-                    } );
+            EntityManager em = JPAUtility.getEntityManager();
+            em.getTransaction().begin();
+//            List<Exit> exits = jdbcTemplate.query("select * from exits where originId = ? ", new Object[] {originId},
+//                    (result, rowNum) -> {
+//                        Exit exit = new Exit();
+//                        exit.setName(result.getString("Name"));
+//                        exit.setDestinationId(result.getInt("DestinationId"));
+
+            List<Exit> exits = em.createQuery("SELECT e FROM org.improving.tag.Exit e").getResultList();
+
             return exits;
         } catch(DataAccessException ex){
             System.out.println("Exception in JDBC: " + ex.getMessage());

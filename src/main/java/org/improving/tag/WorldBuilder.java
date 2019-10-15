@@ -25,18 +25,6 @@ public class WorldBuilder {
         try {
 
             List <Location> locations = locationDAO.findAll();
-            for (Location location: locations) {
-                List<Exit> exits = exitDAO.findByOriginId((int)location.getId());
-                exits.forEach(exit-> {Location destination = locations.stream()
-                                        .filter(locat -> locat.getId() == exit.getDestinationId())
-                                        .findFirst()
-                                        .orElse(null);
-                exit.setDestination(destination);
-                location.addExit(exit);
-
-                });
-            }
-            System.out.println(locations.size());
             locationlist = locations;
 
         }catch(Exception e) {
