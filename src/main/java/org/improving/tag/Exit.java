@@ -22,6 +22,8 @@ public class Exit {
     @JoinColumn(name = "DestinationId")
     private Location destination;
 
+    @Column (name = "Aliases")
+    private String csvAliases;
 
     @Transient
     private List<String> aliases = new ArrayList<>();
@@ -119,13 +121,12 @@ public class Exit {
 //        }
 //    }
 
-    @Column (name = "Aliases")
-    private String csvAliases;
+
 @PostLoad
     public void postLoad() {
 
         if(null !=csvAliases) {
-            Arrays.stream(csvAliases.replace(" ","").split(",")).forEach(alias->aliases.add(alias));
+            aliases.addAll(Arrays.asList(csvAliases.replace(" ", "").split(",")));
         }
     }
 
