@@ -1,5 +1,7 @@
 package org.improving.tag;
 
+import org.improving.tag.items.ListOfStrings;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,11 +24,12 @@ public class Exit {
     @JoinColumn(name = "DestinationId")
     private Location destination;
 
-    @Column (name = "Aliases")
-    private String csvAliases;
+//    @Column (name = "Aliases")
+//    private String csvAliases;
 
-    @Transient
-    private List<String> aliases = new ArrayList<>();
+    @Column (name = "Aliases")
+    @Convert()
+    private ListOfStrings aliases = new ListOfStrings();
 
     private int destinationId;
 
@@ -122,12 +125,12 @@ public class Exit {
 //    }
 
 
-@PostLoad
-    public void postLoad() {
-
-        if(null !=csvAliases) {
-            aliases.addAll(Arrays.asList(csvAliases.replace(" ", "").split(",")));
-        }
-    }
+//@PostLoad
+//    public void postLoad() {
+//
+//        if(null !=csvAliases) {
+//            aliases.addAll(Arrays.asList(csvAliases.replace(" ", "").split(",")));
+//        }
+//    }
 
 }

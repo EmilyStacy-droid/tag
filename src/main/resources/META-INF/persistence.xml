@@ -10,6 +10,8 @@
                   <class>org.improving.tag.Location</class>
                  <class>org.improving.tag.Exit</class>
         <properties>
+            <property name="hibernate.show_sql" value="true" /> <!--see what hybernate is doing !-->
+            <property name="hibernate.id.new_generator_mappings" value="false"/> <!-- needed while doing transaction !-->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- create or validate the database schema -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
